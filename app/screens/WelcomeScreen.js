@@ -1,17 +1,20 @@
 import React from 'react';
 import { ImageBackground, Image, StatusBar, StyleSheet, View, Text } from 'react-native';
 
+import AppButton from '../components/AppButton';
+
 function WelcomeScreen(props) {
     return (
-        <ImageBackground style={styles.background} source={require('../assets/background2.jpg')}>
+        <ImageBackground blurRadius={3} style={styles.background} source={require('../assets/background2.jpg')}>
             <StatusBar></StatusBar>
-            
             <View style={styles.logoContainer} >
                 <Image style={styles.logo}  source={require('../assets/logo2.png')} />
-                <Text>Sell your unwanted items hassle-free</Text>
+                <Text style={styles.slogan} >Sell your unwanted items hassle-free</Text>
             </View>
-            <View style={styles.loginButton}></View>
-            <View style={styles.signUpButton}></View>
+            <View style={styles.buttonsContainer}>
+                <AppButton title="Login" />
+                <AppButton title="Sign Up" color="secondary" />
+            </View>
         </ImageBackground>
     );
 }
@@ -22,10 +25,9 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
     },
-    loginButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: '#FF914C',
+    buttonsContainer: {
+        padding: 20,
+        width: '100%'
     },
     logo: {
         width: 400,
@@ -36,10 +38,9 @@ const styles = StyleSheet.create({
         top: 50,
         alignItems: 'center'
     },
-    signUpButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: '#80411b',
+    slogan: {
+        fontSize: 20,
+        fontWeight: 600,
     }
 });
 
