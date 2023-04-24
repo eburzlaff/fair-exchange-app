@@ -27,7 +27,6 @@ export default function App() {
   console.log(Dimensions.get('screen'))
 
   return (
-    <ListingDetailsScreen/>
-
+    <ViewImageScreen/>
   );
 }
