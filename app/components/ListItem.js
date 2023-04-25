@@ -1,37 +1,63 @@
-import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+} from "react-native";
+import AppText from "./AppText";
+import {Swipeable, GestureHandlerRootView} from "react-native-gesture-handler";
 
-import AppText from './AppText';
-import colors from '../config/colors';
+import colors from "../config/colors";
 
-function ListItem({title, subTitle, image}) {
-    return (
-        <View style={styles.container}>
-            <Image style={styles.image} source={image}/>
+function ListItem({
+  title,
+  subTitle,
+  image,
+  IconComponent,
+  onPress,
+  renderRightActions,
+}) {
+  return (
+    // Wrapped Swipeable in GestureHandlerRootView tags to work on Android
+    <GestureHandlerRootView>
+      <Swipeable renderRightActions={renderRightActions}>
+        <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+          <View style={styles.container}>
+            <Image style={styles.image} source={image} />
             <View>
-                <AppText style={styles.title} >{title}</AppText>
-                <AppText style={styles.subTitle}>{subTitle}</AppText>  
+              <AppText style={styles.title}>{title}</AppText>
+              <AppText style={styles.subTitle}>{subTitle}</AppText>
             </View>
-        </View>
-    );
+          </View>
+        </TouchableHighlight>
+      </Swipeable>
+    </GestureHandlerRootView>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flexDirection: 'row'
-    },
-    image: {
-        width: 70,
-        height: 70,
-        borderRadius: 35,
-        marginRight: 10
-    },
-    title: {
-        fontWeight: 'bold'
-    },
-    subTitle: {
-        color: colors.medium
-    }
-})
+  container: {
+    flexDirection: "row",
+    padding: 15,
+    backgroundColor: colors.white,
+  },
+  detailsContainer: {
+    marginLeft: 10,
+    justifyContent: "center",
+  },
+  image: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+  },
+  subTitle: {
+    color: colors.medium,
+  },
+  title: {
+    fontWeight: "500",
+  },
+});
 
 export default ListItem;
