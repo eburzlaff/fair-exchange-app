@@ -25,14 +25,15 @@ import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import Screen from './app/components/Screen';
 import Icon from './app/components/Icon';
+import AccountScreen from './app/screens/AccountScreen';
+import ListItem from './app/components/ListItem';
+import ListItemDeleteAction from './app/components/ListItemDeleteAction';
 
 export default function App() {
   console.log(useDeviceOrientation());
   console.log(Dimensions.get('screen'))
 
   return (
-    <Screen>
-      <Icon name="email" size={100}/>
-    </Screen>
+    <AccountScreen/>
   );
 }
