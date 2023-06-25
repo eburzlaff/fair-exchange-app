@@ -28,12 +28,13 @@ import Icon from './app/components/Icon';
 import AccountScreen from './app/screens/AccountScreen';
 import ListItem from './app/components/ListItem';
 import ListItemDeleteAction from './app/components/ListItemDeleteAction';
+import ListingsScreen from './app/screens/ListingsScreen';
 
 export default function App() {
   console.log(useDeviceOrientation());
   console.log(Dimensions.get('screen'))
 
   return (
-    <AccountScreen/>
+    <ListingsScreen/>
   );
 }
