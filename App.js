@@ -29,12 +29,16 @@ import AccountScreen from './app/screens/AccountScreen';
 import ListItem from './app/components/ListItem';
 import ListItemDeleteAction from './app/components/ListItemDeleteAction';
 import ListingsScreen from './app/screens/ListingsScreen';
+import AppTextInput from './app/components/AppTextInput';
 
 export default function App() {
   console.log(useDeviceOrientation());
   console.log(Dimensions.get('screen'))
 
   return (
-    <ListingsScreen/>
+    <Screen>
+      <AppTextInput/>
+    </Screen>
+    
   );
 }
