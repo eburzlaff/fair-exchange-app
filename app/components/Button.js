@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    padding: 15,
     width: "100%",
     marginVertical: 10,
   },

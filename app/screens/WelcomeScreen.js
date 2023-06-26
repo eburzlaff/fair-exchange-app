@@ -1,19 +1,23 @@
 import React from 'react';
 import { ImageBackground, Image, StatusBar, StyleSheet, View, Text } from 'react-native';
 
-import AppButton from '../components/AppButton';
+import Button from '../components/Button';
 
 function WelcomeScreen(props) {
     return (
-        <ImageBackground blurRadius={3} style={styles.background} source={require('../assets/background2.jpg')}>
+        <ImageBackground 
+            blurRadius={3} 
+            style={styles.background} 
+            source={require('../assets/background2.jpg')}
+        >
             <StatusBar></StatusBar>
             <View style={styles.logoContainer} >
                 <Image style={styles.logo}  source={require('../assets/logo2.png')} />
                 <Text style={styles.slogan} >Sell your unwanted items hassle-free</Text>
             </View>
             <View style={styles.buttonsContainer}>
-                <AppButton title="Login" />
-                <AppButton title="Sign Up" color="secondary" />
+                <Button title="Login" />
+                <Button title="Sign Up" color="secondary" />
             </View>
         </ImageBackground>
     );
