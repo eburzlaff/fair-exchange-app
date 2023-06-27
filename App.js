@@ -28,12 +28,17 @@ import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import AccountScreen from "./app/screens/AccountScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
+import Screen from "./app/components/Screen";
+import ImageInput from "./app/components/ImageInput";
 
 export default function App() {
+  const [imageUri, setImageUri] = useState();
   console.log(useDeviceOrientation());
   console.log(Dimensions.get('screen'))
 
   return (
-    <WelcomeScreen/>
+    <Screen>
+      <ImageInput imageUri={imageUri} onChangeImage={(uri) => setImageUri(uri)} />
+    </Screen>
   );
 }
