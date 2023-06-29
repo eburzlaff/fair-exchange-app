@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { 
   StyleSheet,
@@ -18,6 +18,8 @@ import {
   Platform
 } from 'react-native';
 
+import * as Location from 'expo-location';
+
 import { useDeviceOrientation } from '@react-native-community/hooks'
 import RegisterScreen from "./app/screens/RegisterScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
@@ -36,6 +38,8 @@ export default function App() {
   const [imageUris, setImageUris] = useState([]);
   console.log(useDeviceOrientation());
   console.log(Dimensions.get('screen'))
+  const [location, setLocation] = useState(null);
+  
 
   const handleAdd = uri => {
     setImageUris([...imageUris, uri]);
@@ -44,13 +48,8 @@ export default function App() {
   const handleRemove = uri => {
     setImageUris(imageUris.filter(imageUri => imageUri !== uri));
   }
+
   return (
-    <Screen>
-      <ImageInputList 
-        imageUris={imageUris} 
-        onAddImage={handleAdd}
-        onRemoveImage={handleRemove}
-      />
-    </Screen>
+    <ListingEditScreen/>
   );
 }
