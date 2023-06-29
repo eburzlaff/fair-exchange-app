@@ -3,7 +3,7 @@ import { ImageBackground, Image, StatusBar, StyleSheet, View, Text } from 'react
 
 import Button from '../components/Button';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({navigation}) {
     return (
         <ImageBackground 
             blurRadius={3} 
@@ -16,8 +16,14 @@ function WelcomeScreen(props) {
                 <Text style={styles.slogan} >Sell your unwanted items hassle-free</Text>
             </View>
             <View style={styles.buttonsContainer}>
-                <Button title="Login" />
-                <Button title="Sign Up" color="secondary" />
+                <Button 
+                    title="Login" 
+                    onPress={() => navigation.navigate("Login")}
+                />
+                <Button
+                    title="Sign Up" color="secondary"
+                    onPress={() => navigation.navigate("Register")}
+                />
             </View>
         </ImageBackground>
     );
