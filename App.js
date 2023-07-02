@@ -23,6 +23,10 @@ import { useDeviceOrientation } from '@react-native-community/hooks'
 import { NavigationContainer } from "@react-navigation/native";
 import navigationTheme from "./app/navigation/navigationTheme";
 import AuthNavigator from "./app/navigation/AuthNavigator";
+import AccountScreen from "./app/screens/AccountScreen";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
+import AppNavigator from "./app/navigation/AppNavigator";
 
 export default function App() {
   console.log(useDeviceOrientation());
@@ -30,7 +34,7 @@ export default function App() {
 
   return (
     <NavigationContainer theme={navigationTheme}>
-      <AuthNavigator />
+      <AppNavigator />
     </NavigationContainer>
   );
 }
