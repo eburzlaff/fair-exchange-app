@@ -14,6 +14,7 @@ import FormImagePicker from "../components/forms/FormImagePicker";
 import listingsApi from "../api/listings";
 import useLocation from "../hooks/useLocation";
 import UploadScreen from "./UploadScreen";
+import { ScrollView } from "react-native-gesture-handler";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -108,48 +109,50 @@ function ListingEditScreen() {
 
   return (
     <Screen style={styles.container}>
-      <UploadScreen
-        onDone={() => setUploadVisible(false)}
-        progress={progress}
-        visible={uploadVisible}
-      />
-      <Form
-        initialValues={{
-          title: "",
-          price: "",
-          description: "",
-          category: null,
-          images: [],
-        }}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        <FormImagePicker name="images" />
-        <FormField maxLength={255} name="title" placeholder="Title" />
-        <FormField
-          keyboardType="numeric"
-          maxLength={8}
-          name="price"
-          placeholder="Price"
-          width={120}
+      <ScrollView>
+        <UploadScreen
+          progress={progress}
+          visible={uploadVisible}
+          onDone={() => setUploadVisible(false)}
         />
-        <Picker
-          items={categories}
-          name="category"
-          numberOfColumns={3}
-          PickerItemComponent={CategoryPickerItem}
-          placeholder="Category"
-          width="50%"
-        />
-        <FormField
-          maxLength={255}
-          multiline
-          name="description"
-          numberOfLines={3}
-          placeholder="Description"
-        />
-        <SubmitButton title="Post" />
-      </Form>
+        <Form
+          initialValues={{
+            title: "",
+            price: "",
+            description: "",
+            category: null,
+            images: [],
+          }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <FormImagePicker name="images" />
+          <FormField maxLength={255} name="title" placeholder="Title" />
+          <FormField
+            keyboardType="numeric"
+            maxLength={8}
+            name="price"
+            placeholder="Price"
+            width={120}
+          />
+          <Picker
+            items={categories}
+            name="category"
+            numberOfColumns={3}
+            PickerItemComponent={CategoryPickerItem}
+            placeholder="Category"
+            width="50%"
+          />
+          <FormField
+            maxLength={255}
+            multiline
+            name="description"
+            numberOfLines={3}
+            placeholder="Description"
+          />
+          <SubmitButton title="Post" />
+        </Form>
+      </ScrollView>
     </Screen>
   );
 }

@@ -30,6 +30,7 @@ import OfflineNotice from "./app/components/OfflineNotice";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import * as SplashScreen from 'expo-splash-screen';
+import { navigationRef } from "./app/navigation/rootNavigation";
 
 export default function App() {
   console.log(useDeviceOrientation());
@@ -55,7 +56,6 @@ export default function App() {
             setIsReady(true);
         }
     }
-
     prepare();
   }, []);
 
@@ -70,7 +70,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme} onReady={onNavigationContainerReady}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme} onReady={onNavigationContainerReady}>
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
       
