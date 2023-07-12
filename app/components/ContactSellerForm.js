@@ -23,6 +23,8 @@ const ContactSellerForm = ({ listing }) => {
   const handleSubmit = async ({ message }, { resetForm }) => {
     Keyboard.dismiss();
 
+    
+
     // sendLocalNotification(3)
 
     const result = await messagesApi.send(message, listing.id);
@@ -31,13 +33,13 @@ const ContactSellerForm = ({ listing }) => {
 
     resetForm();
 
-    // Notifications.scheduleNotificationAsync({
-    //   content: {
-    //     title: "Awesome!",
-    //     body: {message},
-    //   },
-    //   trigger: null,
-    // });
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Awesome!",
+        body: "You message was sent",
+      },
+      trigger: null,
+    });
 
     
   };
