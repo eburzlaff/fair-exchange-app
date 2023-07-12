@@ -31,10 +31,15 @@ import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
 import * as SplashScreen from 'expo-splash-screen';
 import { navigationRef } from "./app/navigation/rootNavigation";
+import logger from "./app/utility/logger";
+// import * as Sentry from '@sentry/react-native';
+
+// logger.start();
 
 export default function App() {
   console.log(useDeviceOrientation());
   console.log(Dimensions.get('screen'))
+  // throw new Error("someError");
 
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);

@@ -31,6 +31,20 @@
         "projectId": "f4a0377d-adb1-4d56-ae85-ed525a5097fb"
       }
     },
-    "owner": "eburzlaff"
+    "owner": "eburzlaff",
+    "plugins": [
+      "sentry-expo"
+    ],
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "sentry org slug, or use the `SENTRY_ORG` environment variable",
+            "project": "sentry project name, or use the `SENTRY_PROJECT` environment variable"
+          }
+        }
+      ]
+    }
   }
 }
