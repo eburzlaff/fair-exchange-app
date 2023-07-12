@@ -46,6 +46,7 @@ export default function App() {
   };
 
   useEffect(() => {
+    // Keep splash screen until user is restored and and set the isReady state var to true
     async function prepare() {
         try {
           await SplashScreen.preventAutoHideAsync();

@@ -23,14 +23,6 @@ const ContactSellerForm = ({ listing }) => {
   const handleSubmit = async ({ message }, { resetForm }) => {
     Keyboard.dismiss();
 
-    Notifications.scheduleNotificationAsync({
-      content: {
-        title: "Awesome!",
-        body: "You message was sent",
-      },
-      trigger: null,
-    });
-
     // sendLocalNotification(3)
 
     const result = await messagesApi.send(message, listing.id);
@@ -38,6 +30,14 @@ const ContactSellerForm = ({ listing }) => {
     if (!result.ok) return alert("Error contacting the seller");
 
     resetForm();
+
+    // Notifications.scheduleNotificationAsync({
+    //   content: {
+    //     title: "Awesome!",
+    //     body: {message},
+    //   },
+    //   trigger: null,
+    // });
 
     
   };

@@ -1,8 +1,15 @@
 import { create } from "apisauce";
 import cache from "../utility/cache";
+import authStorage from "../auth/storage";
 
 const apiClient = create({
   baseURL: "http://192.168.1.108:9000/api",
+});
+
+apiClient.addAsyncRequestTransform(async (request) => {
+  const authToken = await authStorage.getToken();
+  if (!authToken) return;
+  request.headers["x-auth-token"] = authToken;
 });
 
 const get = apiClient.get;
@@ -11,18 +18,11 @@ apiClient.get = async (url, params, axiosConfig) => {
 
   if (response.ok) {
     cache.store(url, response.data);
-    console.log("Data stored in cache:", url, response.data);
     return response;
   }
 
   const data = await cache.get(url);
-  if (data) {
-    console.log("Data retrieved from cache:", url, data);
-    return { ok: true, data };
-  } else {
-    console.log("Cache miss, requesting data from server:", url);
-    return response;
-  }
+  return data ? { ok: true, data } : response;
 };
 
 export default apiClient;
